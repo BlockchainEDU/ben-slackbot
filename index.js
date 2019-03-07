@@ -2,7 +2,7 @@ const SlackBot = require('slackbots');
 const axios = require('axios');
 
 const bot = new SlackBot({
-	token: 'xoxb-3236584496-569472553204-y70U184kNt7dkL2m8V3C10lo',
+	token: 'xoxb-3236584496-569472553204-efP9iMIsQz1LqjJGaF2fK0Rt',
 	name: 'BEN Slackbot'
 });
 
@@ -27,11 +27,38 @@ bot.on('message', (data) => {
 
 	console.log(data);
 	handleMessage(data.text);
+	console.log()
+
+	var array = data.text.split(" ");
+
+    var arrayLength = array.length;
+
+    for (var i = 0; i < arrayLength; i++) {
+        console.log(array[i]);
+		bot.postReactionToChannel(data.channel, array[i], data.ts);
+    }
+
+	if(data.text.includes('smile')) {
+		bot.postReactionToChannel(data.channel, 'smile', data.ts);
+	}
+
+	if(data.text.includes('bitcoin')) {
+		bot.postReactionToChannel(data.channel, 'btc', data.ts);
+	}
+
+	if(data.text.includes('sunny')) {
+		bot.postReactionToChannel(data.channel, 'sunny', data.ts);
+	}
+
+	if(data.text.includes('BEN')) {
+		bot.postReactionToChannel(data.channel, 'ben', data.ts);
+	}
+
 });
 
 // Respond to Data
 function handleMessage(message) {
-	if(message.includes('test')) {
+	if(message.includes('smile')) {
 		runTest();
 	}
 }
@@ -45,12 +72,8 @@ function runTest() {
 		icon_emoji: ':ben:'
 	}
 
-	bot.postMessageToChannel(
-		'test3',
-		`Test: ${test}`,
-		params
-	);
+	bot.postMessageToChannel('test3', `Test: ${test}`,params);
 
-	bot.postReactionToChannel('CGT181BFG', 'smile', '1551949933.004400');
+//	bot.postReactionToChannel('CGT181BFG', 'smile', '1551949933.004400');
 
 }
