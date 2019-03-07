@@ -1,9 +1,13 @@
-console.log('hello');
+console.log("----------------------------");
+console.log("Initializing BEN Slackbot");
+console.log("----------------------------");
 const SlackBot = require('slackbots');
 const axios = require('axios');
+const SLACK_TOKEN = process.env.SLACK_TOKEN;
+const SLACK_ADMIN = process.env.SLACK_ADMIN;
 
 const bot = new SlackBot({
-	token: process.env.SLACK_TOKEN,
+	token: SLACK_TOKEN,
 	name: 'BEN Slackbot'
 });
 
@@ -13,7 +17,7 @@ bot.on('start', () => {
 		icon_emoji: ':ben:'
 	}
 
-	bot.postMessageToChannel('test3', "Let's Hear it For Generation Blockchain!", params);
+    bot.postMessageToUser(SLACK_ADMIN, "I am online and ready to empower Generation Blockchain!", params);
 
 });
 
@@ -29,9 +33,8 @@ bot.on('message', (data) => {
 //	console.log(data);
 	handleMessage(data.text);
 
-	var res = data.text.toLowerCase();
-	var s = "This., -/ is #! an $ % ^ & * example ;: {} of a = -_ string with `~)() punctuation";
-	var punctuationless = res.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()‘’']/g," ");
+	var initialString = data.text.toLowerCase();
+	var punctuationless = initialString.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()‘’']/g," ");
 	var finalString = punctuationless.replace(/\s{2,}/g," ");
 
 	var words = finalString.split(" ");
@@ -202,7 +205,7 @@ bot.on('message', (data) => {
 
 // Respond to Data
 function handleMessage(message) {
-	if(message.includes('smile')) {
+	if(message.includes('test')) {
 		runTest();
 	}
 }
@@ -210,7 +213,6 @@ function handleMessage(message) {
 
 // run the Test
 function runTest() {
-	const test = "test";
 
 	const params = {
 		icon_emoji: ':ben:'
