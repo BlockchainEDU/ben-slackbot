@@ -4,7 +4,6 @@ const axios = require('axios');
 //console.log(token);
 //const token = 'xoxb-3236584496-569472553204-FkFKXKrFxT0dGGdGYOwTOFfcold';
 //console.log(token);
-const PORT = process.env.PORT || 5000;
 
 const bot = new SlackBot({
 	token: process.env.SLACK_TOKEN,
