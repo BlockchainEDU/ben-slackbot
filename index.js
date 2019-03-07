@@ -2,7 +2,7 @@ const SlackBot = require('slackbots');
 const axios = require('axios');
 
 const bot = new SlackBot({
-	token: 'xoxb-3236584496-569472553204-efP9iMIsQz1LqjJGaF2fK0Rt',
+	token: 'xoxb-3236584496-569472553204-ZOqf4UIdYMKwvTIxetLfhPJt',
 	name: 'BEN Slackbot'
 });
 
@@ -29,31 +29,50 @@ bot.on('message', (data) => {
 	handleMessage(data.text);
 	console.log()
 
-	var array = data.text.split(" ");
+	var res = data.text.toLowerCase();
+	var words = res.split(" ");
+	var filteredWords = [];
 
-    var arrayLength = array.length;
+	for (var i = 0, l = words.length, w; i < l; i++) {
+	    w = words[i]
+	    if (!/^(#|\d+)/.test(w) && w.length > 3)
+	        filteredWords.push(w)
+	    if (res.includes('bitcoin')) {
+	    	filteredWords.push('btc');
+	    }
+	    if (w == 'cardano') {
+	    	filteredWords.push('ada');
+	    }
+   	    if (w == 'bitconnect') {
+	    	filteredWords.push('bcc');
+	    }
+   	    if (w == 'binance') {
+	    	filteredWords.push('bnb');
+	    }
+   	    if (w == 'ethereum') {
+	    	filteredWords.push('eth');
+	    }
+   	    if (w == 'ripple') {
+	    	filteredWords.push('xrp');
+	    }
+   	    if (w == 'hyperledger') {
+	    	filteredWords.push('hyp');
+	    }
+   	    if (w == 'energy') {
+	    	filteredWords.push('sunny');
+	    }
+   	    if (w == 'food') {
+	    	filteredWords.push('hamburger');
+	    }
+   	    if (res.includes('blockchain')) {
+	    	filteredWords.push('chains');
+	    }
+	}
 
-    for (var i = 0; i < arrayLength; i++) {
-        console.log(array[i]);
-		bot.postReactionToChannel(data.channel, array[i], data.ts);
+    for (var i = 0; i < filteredWords.length; i++) {
+        console.log(filteredWords[i]);
+		bot.postReactionToChannel(data.channel, filteredWords[i], data.ts);
     }
-
-	if(data.text.includes('smile')) {
-		bot.postReactionToChannel(data.channel, 'smile', data.ts);
-	}
-
-	if(data.text.includes('bitcoin')) {
-		bot.postReactionToChannel(data.channel, 'btc', data.ts);
-	}
-
-	if(data.text.includes('sunny')) {
-		bot.postReactionToChannel(data.channel, 'sunny', data.ts);
-	}
-
-	if(data.text.includes('BEN')) {
-		bot.postReactionToChannel(data.channel, 'ben', data.ts);
-	}
-
 });
 
 // Respond to Data
