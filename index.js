@@ -2,7 +2,7 @@ const SlackBot = require('slackbots');
 const axios = require('axios');
 
 const bot = new SlackBot({
-	token: 'xoxb-3236584496-569472553204-lINXCVTo9E8bhA2Dio4fy588',
+	token: 'xoxb-3236584496-569472553204-HMDpzk8EA2qigArnlyLIsZUt',
 	name: 'BEN Slackbot'
 });
 
@@ -38,7 +38,7 @@ bot.on('message', (data) => {
 
 	for (var i = 0, l = words.length, w; i < l; i++) {
 	    w = words[i]
-	    if (!/^(#|\d+)/.test(w) && w.length > 3)
+	    if (!/^(#|\d+)/.test(w) && w.length > 2)
 	        filteredWords.push(w)
 	}
 
@@ -102,21 +102,42 @@ bot.on('message', (data) => {
 		'miami': 'sunny',
 		'tampa': 'palm_tree',
 		'china': 'flag-cn',
+		'chinese': 'flag-cn',
 		'india': 'flag-in',
+		'indian': 'flag-in',
 		'lgbt': 'rainbow-flag',
 		'lgbtq': 'rainbow-flag',
 		'dubai': 'flag-ae',
 		'usa': 'flag-us',
 		'australia': 'flag-au',
+		'australian': 'flag-au',
 		'canada': 'flag-ca',
+		'canadian': 'flag-ca',
 		'colombia': 'flag-co',
+		'colombian': 'flag-co',
 		'italy': 'flag-it',
+		'italian': 'flag-it',
 		'netherlands': 'flag-nl',
+		'dutch': 'flag-nl',
 		'vietnam': 'flag-vn',
+		'vietnamese': 'flag-vn',
 		'trading': 'chart_with_upwards_trend',
 		'hackathons': 'keyboard',
 		'nyc': 'statue_of_liberty',
 		'tokyo': 'tokyo_tower',
+		'drink': 'cup_with_straw',
+		'drinks': 'cup_with_straw',
+		'coffee': 'coffee',
+		'free': 'free',
+		'dog': 'dog',
+		'unicorn': 'unicorn',	
+		'halloween': 'halloween',	
+		'pizza': 'pizza',	
+		'lightning': 'zap',	
+		'beer': 'beer',	
+		'congrats': 'tada',
+		'congratulations': 'tada',
+		'flight': 'airplane',
 	};
 
 	var emojis = [];
@@ -194,8 +215,8 @@ function runTest() {
 		icon_emoji: ':ben:'
 	}
 
-	bot.postMessageToChannel('test3', `Test: ${test}`,params);
+//	bot.postMessageToChannel('test3', `Test: ${test}`,params);
 
-	bot.postReactionToChannel('CGT181BFG', 'smile', '1551949933.004400');
+//	bot.postReactionToChannel('CGT181BFG', 'smile', '1551949933.004400');
 
 }
