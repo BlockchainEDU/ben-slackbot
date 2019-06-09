@@ -17,7 +17,7 @@ bot.on('start', () => {
 		icon_emoji: ':ben:'
 	}
 
-    bot.postMessageToUser(SLACK_ADMIN, "I am online and ready to empower Generation Blockchain!", params);
+//    bot.postMessageToUser(SLACK_ADMIN, "I am online and ready to empower Generation Blockchain!", params);
 
 });
 
